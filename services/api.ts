@@ -4,9 +4,24 @@ import { GoogleGenAI } from "@google/genai";
 // Mock delay to simulate network latency
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Initialize Gemini AI
-// process.env.API_KEY is assumed to be injected by the build system/environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Safely retrieve API Key to prevent "process is not defined" crashes in pure browser environments
+const getApiKey = () => {
+  try {
+    // Check if process exists (Node/Build env)
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env.API_KEY;
+    }
+    // Check global window fallback (Browser polyfill)
+    if (typeof window !== 'undefined' && (window as any).process && (window as any).process.env) {
+      return (window as any).process.env.API_KEY;
+    }
+  } catch (e) {
+    console.warn("Failed to read environment variables safely.");
+  }
+  return '';
+};
+
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 export const apiService = {
   
