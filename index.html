@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SteamAssets Forge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              slate: {
+                850: '#151e2e',
+                950: '#020617',
+              }
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        /* Light Mode Defaults */
+        --bg-body: #f1f5f9; /* Slate 100 */
+        --text-main: #0f172a; /* Slate 900 */
+        --text-muted: #64748b; /* Slate 500 */
+        --glass-bg: rgba(255, 255, 255, 0.8);
+        --glass-border: rgba(203, 213, 225, 0.6);
+        --glass-lighter: rgba(255, 255, 255, 0.5);
+        --gradient-orb-1: #c7d2fe; /* Indigo 200 */
+        --gradient-orb-2: #e2e8f0; /* Slate 200 */
+        --scrollbar-thumb: rgba(148, 163, 184, 0.5);
+      }
+
+      .dark {
+        /* Dark Mode Overrides */
+        --bg-body: #020617; /* Slate 950 */
+        --text-main: #f8fafc; /* Slate 50 */
+        --text-muted: #94a3b8; /* Slate 400 */
+        --glass-bg: rgba(15, 23, 42, 0.6);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-lighter: rgba(30, 41, 59, 0.4);
+        --gradient-orb-1: #1e1b4b; /* Indigo 950 */
+        --gradient-orb-2: #1e293b; /* Slate 800 */
+        --scrollbar-thumb: rgba(71, 85, 105, 0.5);
+      }
+
+      body {
+        background-color: var(--bg-body);
+        background-image: 
+          radial-gradient(circle at 50% 0%, var(--gradient-orb-1) 0%, transparent 40%),
+          radial-gradient(circle at 80% 80%, var(--gradient-orb-2) 0%, transparent 40%);
+        color: var(--text-main);
+        min-height: 100vh;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Glassmorphism utilities */
+      .glass-panel {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+      }
+      
+      .glass-panel-lighter {
+        background: var(--glass-lighter);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--glass-border);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb); 
+        border-radius: 99px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6366f1; 
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.4s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "gifuct-js": "https://esm.sh/gifuct-js@2.1.2",
+    "gifenc": "https://unpkg.com/gifenc@1.0.3/dist/gifenc.esm.js",
+    "jszip": "https://esm.sh/jszip@3.10.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
